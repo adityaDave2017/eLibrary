@@ -19,10 +19,15 @@ dependencies {
     compile 'javax.servlet.jsp:jsp-api:2.2'
     compile 'javax.servlet:jstl:1.2'
 
-    compile 'mysql:mysql-connector-java:5.1.42'
+    providedCompile 'mysql:mysql-connector-java:5.1.42'
 }
 
 war {
-    version ="0.1"
+    version = "0.1"
     baseName = "eLibrary"
+}
+
+task copyRuntimeLibs(type: Copy) {
+    into "src/main/webapp/WEB-INF/lib"
+    from configurations.testRuntime
 }

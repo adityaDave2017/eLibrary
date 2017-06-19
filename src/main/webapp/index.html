@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>eLibrary</title>
+    <title>eLibrary Login</title>
 </head>
 <body>
-
+<div id="loginForm">
+    <form action="login" method="post">
+        <input type="text" name="UserName" placeholder="Username"><br><br>
+        <input type="password" name="Password" placeholder="Password"><br><br>
+        <label>admin<input type="radio" name="Type" value="admin"></label>
+        &nbsp;&nbsp;&nbsp;
+        <label>librarian<input type="radio" name="Type" value="librarian"></label><br><br>
+        <input type="submit" value="Login">
+    </form>
+</div>
 </body>
 </html>
