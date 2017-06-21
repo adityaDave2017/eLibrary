@@ -5,5 +5,18 @@
 </head>
 <body>
 Welcome, Admin
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <td></td>
+        </tr>
+    </thead>
+
+</table>
+
+
+<a href="index.html">LOGOUT</a>
 </body>
 </html>

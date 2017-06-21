@@ -35,15 +35,8 @@
     </context-param>
 
 
-    <servlet>
-        <servlet-name>AdminHome</servlet-name>
-        <jsp-file>adminHome.jsp</jsp-file>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>AdminHome</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
 
 </web-app>
