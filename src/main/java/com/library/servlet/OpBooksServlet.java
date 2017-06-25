@@ -16,6 +16,7 @@ import java.io.IOException;
 public class OpBooksServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType("text/html");
 
         String addParam = request.getParameter("add");
         if (addParam != null && addParam.equals("true")) {
@@ -31,9 +32,10 @@ public class OpBooksServlet extends HttpServlet {
             book.setAvgRating(request.getParameter("avgRating"));
             book.setImageUrl(request.getParameter("imageUrl"));
             book.setQuantity(Integer.valueOf(request.getParameter("quantity")));
+            book.setIssuedQty(Integer.valueOf(request.getParameter("issuedQty")));
 
             if (Database.addBook(getServletContext(), book)) {
-                response.getWriter().write("Added Successfully");
+                response.getWriter().write("Added Successfully!<br><br>");
                 HttpSession session = request.getSession();
                 if (session != null) {
                     session.setAttribute(HomeServlet.BOOKS_LIST, Database.getAllBooks(getServletContext()));
@@ -57,9 +59,10 @@ public class OpBooksServlet extends HttpServlet {
             book.setAvgRating(request.getParameter("avgRating"));
             book.setImageUrl(request.getParameter("imageUrl"));
             book.setQuantity(Integer.valueOf(request.getParameter("quantity")));
+            book.setIssuedQty(Integer.valueOf(request.getParameter("issuedQty")));
 
             if (Database.editBook(getServletContext(), book)) {
-                response.getWriter().write("Edit Successful");
+                response.getWriter().write("Edit Successful!<br><br>");
                 HttpSession session = request.getSession();
                 if (session != null) {
                     session.setAttribute(HomeServlet.BOOKS_LIST, Database.getAllBooks(getServletContext()));
@@ -72,7 +75,7 @@ public class OpBooksServlet extends HttpServlet {
         String deleteParam = request.getParameter("delete");
         if (deleteParam != null && deleteParam.equals("true")) {
             if (Database.deleteBook(getServletContext(), Integer.valueOf(request.getParameter("bookId")))) {
-                response.getWriter().write("Delete Successful");
+                response.getWriter().write("Delete Successful!<br><br>");
                 HttpSession session = request.getSession();
                 if (session != null) {
                     session.setAttribute(HomeServlet.BOOKS_LIST, Database.getAllBooks(getServletContext()));

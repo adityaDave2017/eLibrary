@@ -1,6 +1,5 @@
 package com.library.servlet;
 
-import com.library.beans.Book;
 import com.library.beans.Librarian;
 import com.library.utils.Database;
 
@@ -19,6 +18,7 @@ public class HomeServlet extends HttpServlet {
 
     static final String LIBRARIAN_LIST = "LIBRARIAN_LIST";
     static final String BOOKS_LIST = "BOOKS_LIST";
+    static final String MEMBERS_LIST = "MEMBERS_LIST";
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String accountType = request.getAttribute(AuthenticationServlet.ACCOUNT_TYPE).toString();
@@ -30,11 +30,11 @@ public class HomeServlet extends HttpServlet {
                 request.getRequestDispatcher("admin_home.jsp").forward(request, response);
                 break;
             case AuthenticationServlet.LIBRARIAN_ACCOUNT:
-                List<Book> books = Database.getAllBooks(getServletContext());
-                session.setAttribute(BOOKS_LIST, books);
+                session.setAttribute(BOOKS_LIST, Database.getAllBooks(getServletContext()));
+                session.setAttribute(MEMBERS_LIST, Database.getAllMembers(getServletContext()));
                 session.setAttribute("userName",
                         Database.getLibrarianName(getServletContext(), request.getAttribute(AuthenticationServlet.LIBRARIAN_USERNAME).toString()));
-                request.getRequestDispatcher("librarian_home.jsp").forward(request, response);
+                request.getRequestDispatcher("librarian_home.jsp?show=books").forward(request, response);
                 break;
         }
     }

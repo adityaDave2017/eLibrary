@@ -1,18 +1,23 @@
 package com.library.beans;
 
 
+import java.io.File;
+
+@SuppressWarnings({"unused", "SameParameterValue"})
 public class Member {
 
     private int memberId;
     private String firstName;
     private String middleName;
+    private String lastName;
     private String emailId;
     private String occupation;
     private String addressLine1;
     private String addressLine2;
     private String area;
-    private String zipcode;
+    private String zipCode;
     private String mobileNo;
+    private File idProof;
 
 
     public Member() {
@@ -40,6 +45,14 @@ public class Member {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmailId() {
@@ -82,12 +95,12 @@ public class Member {
         this.area = area;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getMobileNo() {
@@ -96,6 +109,14 @@ public class Member {
 
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
+    }
+
+    public File getIdProof() {
+        return idProof;
+    }
+
+    public void setIdProof(File idProof) {
+        this.idProof = idProof;
     }
 
     @Override
@@ -109,7 +130,7 @@ public class Member {
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
                 ", area='" + area + '\'' +
-                ", zipcode='" + zipcode + '\'' +
+                ", zipCode='" + zipCode + '\'' +
                 ", mobileNo='" + mobileNo + '\'' +
                 '}';
     }

@@ -20,7 +20,8 @@
                 <input type="hidden" name="LibrarianId" value="${edit_librarian.librarianId}">
                 <label>Name: <input type="text" name="Name" value="${edit_librarian.name}" required="required"></label><br>
                 <label>Username: <input type="text" name="Username" value="${edit_librarian.username}" required="required"></label><br>
-                <label>Email Id: <input type="text" name="EmailId" value="${edit_librarian.emailId}" required="required"></label><br>
+                <label>Email Id: <input type="email" name="EmailId" value="${edit_librarian.emailId}"
+                                        required="required"></label><br>
                 <label>Mobile No. <input type="text" name="MobileNo" value="${edit_librarian.mobileNo}" required="required"></label><br>
                 <br>
                 <input type="submit" value="Edit">

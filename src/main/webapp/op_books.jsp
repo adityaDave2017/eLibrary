@@ -18,7 +18,7 @@
     <c:forEach var="book" items="${books_list}">
         <c:if test="${book.bookID == param.bookId}">
             <form action="op_books?edit=true" method="post">
-                <input type="hidden" name="bookId" value="bookId=${book.bookID}">
+                <input type="hidden" name="bookId" value="${book.bookID}">
                 <label>ISBN 13: <input type="number" name="isbn13" value="${book.isbn13}"></label><br><br>
                 <label>ISBN 10: <input type="number" name="isbn10" value="${book.isbn10}"></label><br><br>
                 <label>Title: <input type="text" name="title" value="${book.title}"></label><br><br>
@@ -31,6 +31,7 @@
                 <label>Avg. Rating: <input type="number" name="avgRating" value="${book.avgRating}"></label><br><br>
                 <label>Image URL: <input type="text" name="imageUrl" value="${book.imageUrl}"></label><br><br>
                 <label>Quantity: <input type="number" name="quantity" value="${book.quantity}"></label><br>
+                <label>Issued Qty: <input type="number" name="issuedQty" required="required"></label><br>
                 <br>
                 <input type="submit" value="Edit">
             </form>
@@ -45,6 +46,24 @@
             No Books Found. Try Again!
             <br><br>
             <%@include file="find_book.html"%>
+            <br>OR<br>
+            <form action="op_books?add=true" method="post">
+                <label>ISBN 13: <input type="number" name="isbn13" required="required"></label><br><br>
+                <label>ISBN 10: <input type="number" name="isbn10" required="required"></label><br><br>
+                <label>Title: <input type="text" name="title" required="required"></label><br><br>
+                <label>Description: <textarea name="description" required="required"></textarea></label><br><br>
+                <label>Page Count: <input type="number" name="pageCount"></label><br><br>
+                <label>Authors: <input type="text" name="authors" required="required"></label><br><br>
+                <label>Publisher: <input type="text" name="publisher" required="required"></label><br><br>
+                <label>Publish Date: <input type="text" name="publishDate" required="required"></label><br><br>
+                <label>Category: <input type="text" name="category" required="required"></label><br><br>
+                <label>Avg. Rating: <input type="number" name="avgRating" required="required"></label><br><br>
+                <label>Image URL: <input type="text" name="imageUrl"></label><br><br>
+                <label>Quantity: <input type="number" name="quantity" required="required"></label><br>
+                <label>Issued Qty: <input type="number" name="issuedQty" required="required"></label><br>
+                <br>
+                <input type="submit" value="Add">
+            </form>
         </c:when>
         <c:otherwise>
             <c:forEach var="newBook" items="${newBookList}">
@@ -61,6 +80,7 @@
                     <label>Avg. Rating: <input type="number" name="avgRating" value="${newBook.avgRating}" required="required"></label><br><br>
                     <label>Image URL: <input type="text" name="imageUrl" value="${newBook.imageUrl}" required="required"></label><br><br>
                     <label>Quantity: <input type="number" name="quantity" required="required"></label><br>
+                    <label>Issued Qty: <input type="number" name="issuedQty" required="required"></label><br>
                     <br>
                     <input type="submit" value="Add">
                 </form>

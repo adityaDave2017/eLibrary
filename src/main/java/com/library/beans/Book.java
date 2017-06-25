@@ -16,6 +16,7 @@ public class Book {
     private String avgRating;
     private String imageUrl;
     private int quantity;
+    private int issuedQty;
 
 
     public Book() {
@@ -125,6 +126,14 @@ public class Book {
         this.quantity = quantity;
     }
 
+    public int getIssuedQty() {
+        return issuedQty;
+    }
+
+    public void setIssuedQty(int issuedQty) {
+        this.issuedQty = issuedQty;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -140,6 +149,7 @@ public class Book {
                 ", avgRating='" + avgRating + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", quantity=" + quantity +
+                ", issued quantity=" + issuedQty +
                 '}';
     }
 }
