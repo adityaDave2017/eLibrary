@@ -14,20 +14,8 @@ public class Member {
     private String zipcode;
     private String mobileNo;
 
-    public Member() {
-    }
 
-    public Member(int memberId, String firstName, String middleName, String emailId, String occupation, String addressLine1, String addressLine2, String area, String zipcode, String mobileNo) {
-        this.memberId = memberId;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.emailId = emailId;
-        this.occupation = occupation;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.area = area;
-        this.zipcode = zipcode;
-        this.mobileNo = mobileNo;
+    public Member() {
     }
 
     public int getMemberId() {

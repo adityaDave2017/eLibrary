@@ -9,15 +9,8 @@ public class BookIssue {
     private String issueDate;
     private String returnDate;
 
-    public BookIssue() {
-    }
 
-    public BookIssue(int issueId, int bookId, int memberId, String issueDate, String returnDate) {
-        this.issueId = issueId;
-        this.bookId = bookId;
-        this.memberId = memberId;
-        this.issueDate = issueDate;
-        this.returnDate = returnDate;
+    public BookIssue() {
     }
 
     public int getIssueId() {

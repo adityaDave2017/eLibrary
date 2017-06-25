@@ -8,6 +8,7 @@ public class Book {
     private String isbn10;
     private String title;
     private String description;
+    private int pageCount;
     private String authors;
     private String publisher;
     private String publishDate;
@@ -18,21 +19,6 @@ public class Book {
 
 
     public Book() {
-    }
-
-    public Book(int bookID, String isbn13, String isbn10, String title, String description, String authors, String publisher, String publishDate, String category, String avgRating, String imageUrl, int quantity) {
-        this.bookID = bookID;
-        this.isbn13 = isbn13;
-        this.isbn10 = isbn10;
-        this.title = title;
-        this.description = description;
-        this.authors = authors;
-        this.publisher = publisher;
-        this.publishDate = publishDate;
-        this.category = category;
-        this.avgRating = avgRating;
-        this.imageUrl = imageUrl;
-        this.quantity = quantity;
     }
 
     public int getBookID() {
@@ -73,6 +59,14 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
     }
 
     public String getAuthors() {

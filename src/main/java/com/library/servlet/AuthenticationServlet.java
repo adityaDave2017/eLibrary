@@ -18,6 +18,8 @@ public class AuthenticationServlet extends HttpServlet {
     static final String ADMIN_ACCOUNT = "ADMIN_ACCOUNT";
     static final String LIBRARIAN_ACCOUNT = "LIBRARIAN_ACCOUNT";
 
+    static final String LIBRARIAN_USERNAME = "LIBRARIAN_USERNAME";
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
 
@@ -31,18 +33,19 @@ public class AuthenticationServlet extends HttpServlet {
                 if (userName.equals(servletContext.getInitParameter("adminUserName"))
                         && password.equals(servletContext.getInitParameter("adminPassword"))) {
                     request.setAttribute(ACCOUNT_TYPE, ADMIN_ACCOUNT);
-                    request.getRequestDispatcher("/home").forward(request, response);
+                    request.getRequestDispatcher("home").forward(request, response);
                 } else {
-                    response.getWriter().write("invalid credentials");
+                    response.getWriter().write("invalid credentials<br><br>");
                     servletContext.getRequestDispatcher("/index.html").include(request, response);
                 }
                 break;
             case "librarian":
                 if (Database.isValidLibrarian(servletContext, userName, password)) {
                     request.setAttribute(ACCOUNT_TYPE, LIBRARIAN_ACCOUNT);
-                    response.sendRedirect("/home");
+                    request.setAttribute(LIBRARIAN_USERNAME, userName);
+                    request.getRequestDispatcher("home").forward(request, response);
                 } else {
-                    response.getWriter().write("invalid credentials<br><b");
+                    response.getWriter().write("invalid credentials<br><br>");
                     servletContext.getRequestDispatcher("/index.html").include(request, response);
                 }
                 break;

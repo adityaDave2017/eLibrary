@@ -20,6 +20,9 @@ dependencies {
     compile 'javax.servlet:jstl:1.2'
 
     providedCompile 'mysql:mysql-connector-java:5.1.42'
+
+    compile 'org.json:json:20170516'
+    compile 'org.jetbrains:annotations:15.0'
 }
 
 war {

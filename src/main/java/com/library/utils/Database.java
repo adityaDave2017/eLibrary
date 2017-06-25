@@ -7,7 +7,6 @@ import javax.servlet.ServletContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 
@@ -30,7 +29,6 @@ public class Database {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String storedPassword = resultSet.getString("password");
-                System.out.println("Password: " + storedPassword);
                 return storedPassword.equals(PasswordUtils.generateHash(password + servletContext.getInitParameter("passwordSalt")));
             } else {
                 System.out.println("Not Found!!!");
@@ -49,16 +47,14 @@ public class Database {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM librarian");
             while (resultSet.next()) {
-                librarians.add(
-                        new Librarian(
-                                resultSet.getInt("librarian_id"),
-                                resultSet.getString("username"),
-                                resultSet.getString("password"),
-                                resultSet.getString("name"),
-                                resultSet.getString("mobile_no"),
-                                resultSet.getString("email_id")
-                        )
-                );
+                Librarian librarian = new Librarian();
+                librarian.setLibrarianId(resultSet.getInt("librarian_id"));
+                librarian.setUsername(resultSet.getString("username"));
+                librarian.setPassword(resultSet.getString("password"));
+                librarian.setName(resultSet.getString("name"));
+                librarian.setMobileNo(resultSet.getString("mobile_no"));
+                librarian.setEmailId(resultSet.getString("email_id"));
+                librarians.add(librarian);
             }
             return librarians;
         } catch (Exception exc) {
@@ -74,28 +70,43 @@ public class Database {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM books");
             while (resultSet.next()) {
-                books.add(
-                        new Book(
-                                resultSet.getInt("book_id"),
-                                resultSet.getString("isbn_13"),
-                                resultSet.getString("isbn_10"),
-                                resultSet.getString("title"),
-                                resultSet.getString("description"),
-                                resultSet.getString("authors"),
-                                resultSet.getString("publisher"),
-                                resultSet.getString("publish_date"),
-                                resultSet.getString("category"),
-                                resultSet.getString("avg_rating"),
-                                resultSet.getString("image_url"),
-                                resultSet.getInt("quantity")
-                        )
-                );
+                Book book = new Book();
+                book.setBookID(resultSet.getInt("book_id"));
+                book.setIsbn13(resultSet.getString("isbn_13"));
+                book.setIsbn10(resultSet.getString("isbn_10"));
+                book.setTitle(resultSet.getString("title"));
+                book.setDescription(resultSet.getString("description"));
+                book.setPageCount(resultSet.getInt("page_count"));
+                book.setAuthors(resultSet.getString("authors"));
+                book.setPublisher(resultSet.getString("publisher"));
+                book.setPublishDate(resultSet.getString("publish_date"));
+                book.setCategory(resultSet.getString("category"));
+                book.setAvgRating(resultSet.getString("avg_rating"));
+                book.setImageUrl(resultSet.getString("image_url"));
+                book.setQuantity(resultSet.getInt("quantity"));
+                books.add(book);
             }
             return books;
         } catch (Exception exc) {
             exc.printStackTrace();
             return books;
         }
+    }
+
+
+    public static boolean addBook(ServletContext servletContext, Book book) {
+
+        return false;
+    }
+
+
+    public static boolean editBook(ServletContext servletContext, Book book) {
+        return false;
+    }
+
+
+    public static boolean deleteBook(ServletContext servletContext, int bookId) {
+        return false;
     }
 
 
@@ -132,6 +143,22 @@ public class Database {
         return false;
     }
 
+
+    public static String getLibrarianName(ServletContext servletContext, String userName) {
+        String query = "SELECT * FROM librarian WHERE username = ?";
+        String name = "";
+        try (Connection connection = getConnection(servletContext)) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, userName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                name = resultSet.getString("name");
+            }
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
+        return name;
+    }
 
     public static boolean removeLibrarian(ServletContext servletContext, int librarianId) {
         String deleteQuery = "DELETE FROM librarian WHERE librarian_id = ?";

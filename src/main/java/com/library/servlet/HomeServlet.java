@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,9 +21,7 @@ public class HomeServlet extends HttpServlet {
     static final String BOOKS_LIST = "BOOKS_LIST";
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-
         String accountType = request.getAttribute(AuthenticationServlet.ACCOUNT_TYPE).toString();
-
         HttpSession session = request.getSession(true);
         switch (accountType) {
             case AuthenticationServlet.ADMIN_ACCOUNT:
@@ -35,7 +32,9 @@ public class HomeServlet extends HttpServlet {
             case AuthenticationServlet.LIBRARIAN_ACCOUNT:
                 List<Book> books = Database.getAllBooks(getServletContext());
                 session.setAttribute(BOOKS_LIST, books);
-                request.getRequestDispatcher("librarian_jsp").forward(request, response);
+                session.setAttribute("userName",
+                        Database.getLibrarianName(getServletContext(), request.getAttribute(AuthenticationServlet.LIBRARIAN_USERNAME).toString()));
+                request.getRequestDispatcher("librarian_home.jsp").forward(request, response);
                 break;
         }
     }

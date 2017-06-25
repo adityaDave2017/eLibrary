@@ -24,7 +24,14 @@ public class OpLibrarianServlet extends HttpServlet {
         String emailId = request.getParameter("EmailId");
         String mobileNo = request.getParameter("MobileNo");
 
-        Librarian librarian = new Librarian(0, username, null, name, mobileNo, emailId);
+        Librarian librarian = new Librarian();
+        librarian.setLibrarianId(0);
+        librarian.setUsername(username);
+        librarian.setPassword(null);
+        librarian.setName(name);
+        librarian.setMobileNo(mobileNo);
+        librarian.setEmailId(emailId);
+
         String edit = request.getParameter("edit");
         String add = request.getParameter("add");
         String delete = request.getParameter("delete");

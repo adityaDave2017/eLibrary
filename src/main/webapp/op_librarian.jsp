@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <%@include file="header.html"%>
+    <%@include file="admin_header.html"%>
     <br><br>
 
     <c:choose>
@@ -18,21 +18,21 @@
             </c:forEach>
             <form action="op_librarian?edit=true" method="post">
                 <input type="hidden" name="LibrarianId" value="${edit_librarian.librarianId}">
-                <label>Name: <input type="text" name="Name" value="${edit_librarian.name}"></label><br>
-                <label>Username: <input type="text" name="Username" value="${edit_librarian.username}"></label><br>
-                <label>Email Id: <input type="text" name="EmailId" value="${edit_librarian.emailId}"></label><br>
-                <label>Mobile No. <input type="text" name="MobileNo" value="${edit_librarian.mobileNo}"></label><br>
+                <label>Name: <input type="text" name="Name" value="${edit_librarian.name}" required="required"></label><br>
+                <label>Username: <input type="text" name="Username" value="${edit_librarian.username}" required="required"></label><br>
+                <label>Email Id: <input type="text" name="EmailId" value="${edit_librarian.emailId}" required="required"></label><br>
+                <label>Mobile No. <input type="text" name="MobileNo" value="${edit_librarian.mobileNo}" required="required"></label><br>
                 <br>
                 <input type="submit" value="Edit">
             </form>
         </c:when>
         <c:when test="${param.add == true}">
             <form action="op_librarian?add=true" method="post">
-                <label>Name: <input type="text" name="Name"></label><br>
-                <label>Username: <input type="text" name="Username"></label><br>
-                <label>Password: <input type="password" name="Password"></label><br>
-                <label>Email Id: <input type="text" name="EmailId"></label><br>
-                <label>Mobile No. <input type="text" name="MobileNo"></label><br>
+                <label>Name: <input type="text" name="Name" required="required"></label><br>
+                <label>Username: <input type="text" name="Username" required="required"></label><br>
+                <label>Password: <input type="password" name="Password" required="required"></label><br>
+                <label>Email Id: <input type="text" name="EmailId" required="required"></label><br>
+                <label>Mobile No. <input type="text" name="MobileNo" required="required"></label><br>
                 <br>
                 <input type="submit" value="Add">
             </form>

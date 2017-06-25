@@ -10,16 +10,8 @@ public class Librarian {
     private String mobileNo;
     private String emailId;
 
-    public Librarian() {
-    }
 
-    public Librarian(int librarianId, String username, String password, String name, String mobileNo, String emailId) {
-        this.librarianId = librarianId;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.mobileNo = mobileNo;
-        this.emailId = emailId;
+    public Librarian() {
     }
 
     public int getLibrarianId() {
