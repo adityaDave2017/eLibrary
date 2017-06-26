@@ -1,0 +1,14 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">localhost:3306/eLibrary</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">jump</property>
+        <property name="connection.password">secret</property>
+        <property name="connection.autocommit">true</property>
+
+        <mapping class="com.library.bean.Librarian"/>
+        <mapping class="com.library.bean.Member"/>
+        <mapping class="com.library.bean.Book"/>
+        <mapping class="com.library.bean.BookIssue"/>
+    </session-factory>
+</hibernate-configuration>

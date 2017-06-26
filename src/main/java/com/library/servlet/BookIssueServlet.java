@@ -38,7 +38,7 @@ public class BookIssueServlet extends HttpServlet {
                     return;
                 }
                 if (Database.hasCrossedIssueLimit(getServletContext(), memberMobileNo)) {
-                    response.getWriter().write("Cannot issue more than : " + Database.BOOK_ISSUING_LIMIT + "!<br><br>");
+                    response.getWriter().write("Cannot issue more than : " + getServletContext().getInitParameter("bookIssueLimit") + "!<br><br>");
                     request.getRequestDispatcher("librarian_home.jsp?show=books").include(request, response);
                     return;
                 }

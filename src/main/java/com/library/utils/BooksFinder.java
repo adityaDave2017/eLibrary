@@ -1,7 +1,7 @@
 package com.library.utils;
 
 
-import com.library.beans.Book;
+import com.library.bean.Book;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;

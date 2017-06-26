@@ -1,6 +1,6 @@
 package com.library.servlet;
 
-import com.library.beans.Book;
+import com.library.bean.Book;
 import com.library.utils.Database;
 
 import javax.servlet.ServletException;
